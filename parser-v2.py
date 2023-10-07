@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
-
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
@@ -67,8 +64,9 @@ df_e['mosh'] = df_e['mosh'].apply(lambda x : str(x)[:-4]).apply(lambda x : float
 df_e['obyem'] = df_e['obyem'].apply(lambda x : str(x)[:-5]).apply(lambda x : int(x))
 df_e['year'] = df_e['year'].apply(lambda x : int(x))
 df_e['km'] = df_e['km'].apply(lambda x : str(x)[:-3]).str.replace(" ", "").apply(lambda x : int(x)/1000)
-df_e
+
+df2 = pd.concat([df_b, df_e])
 
 # Сохраняем результаты
-df.to_excel(r'dataset.xlsx', index=False)
+df2.to_excel(r'dataset.xlsx', index=False)
 
